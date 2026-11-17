@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+   
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #172554;
+    font-size: 25px;
+    text-align: center;
+}
+
+.cont {
+    width: 380px;
+    background-color: white;
+    padding: 15px 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fo label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #334155;
+    white-space: nowrap;
+}
+
+.fo input,
+.fo select {
+    width: 220px;
+    padding: 6px 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 5px;
+    outline: none;
+    font-size: 13px;
+    background-color: #f8fafc;
+}
+
+.fo input:focus,
+.fo select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+.fo button {
+    padding: 8px;
+    margin-top: 2px;
+    border: none;
+    border-radius: 6px;
+    background-color: #1d4ed8;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fo button:hover {
+    background-color: #1e40af;
+}
+
+.fo button:active {
+    transform: scale(0.97);
+}
+
+/* Mobile screens */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .cont {
+        width: 92%;
+        padding: 15px;
+    }
+
+    .fo {
+        gap: 8px;
+    }
+
+    .fo input,
+    .fo select {
+        width: 65%;
+    }
+}
+
+/* Tablet screens */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .cont {
+        width: 400px;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+}
+
+/* Desktop screens */
+@media screen and (min-width: 769px) {
+    .cont {
+        width: 380px;
+    }
+}
+   </style>
+</head>
+<body >
+
+    <h1>STUDENT REGISTRATION FORM</h1>
+    <div class="cont">
+    <form action="/student/add" method="post" class="fo">
+        <label for="">Name :  <input type="text" name="name" id=""></label><br>
+       
+        <label for="">Age :  <input type="text" name="age" id=""></label><br>
+    
+        <label for="">Gender : <input type="text" name="gender" id=""></label><br>
+        <label for="">Marks : <input type="text" name="marks" id=""></label><br>
+        <label for="">Course : <input type="text" name="course" id=""></label><br>
+        <label for="">Image : <input type="text" name="image" id=""></label><br>
+        <label for="">Attendence : <select name="status" id="" >
+            <option value="0">ABSENT</option>
+            <option value="1">PRESENT</option>
+            
+        </select>
+        </label><br>
+        <button>submit</button>
+    </form>
+    </div>
+</body>
+</html>

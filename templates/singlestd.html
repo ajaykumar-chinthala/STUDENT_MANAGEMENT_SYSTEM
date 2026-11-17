@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f1f5f9;
+            padding: 20px;
+        }
+
+        /* Main Container */
+
+        .container {
+            width: 750px;
+            max-width: 100%;
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Student Card */
+
+        .card {
+            width: 100%;
+            min-height: 400px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            gap: 25px;
+            padding: 25px;
+
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+            border: 1.5px solid #c7d7fe;
+            border-radius: 18px;
+
+            box-shadow:
+                0 4px 10px rgba(37, 99, 235, 0.06),
+                0 10px 25px rgba(30, 64, 175, 0.08);
+
+            transition: all 0.3s ease;
+           
+        }
+
+        .card:hover {
+            border-color: #6366f1;
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 8px 18px rgba(37, 99, 235, 0.12),
+                0 15px 35px rgba(79, 70, 229, 0.15);
+        }
+
+        /* Student Picture - Left Side */
+
+        .pic {
+            width: 40%;
+            min-height: 350px;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 3px solid #dbeafe;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+            background: #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Student Information - Right Side */
+
+        .info {
+            width: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 13px;
+            padding: 10px 5px;
+        }
+
+        .info h2 {
+            color: #172554;
+            font-size: 25px;
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #dbeafe;
+        }
+
+        .info p {
+            font-size: 15px;
+            color: #475569;
+            text-align: left;
+            padding: 7px 10px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info p strong {
+            color: #172554;
+        }
+
+        /* Status */
+
+        .status {
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            width: fit-content;
+        }
+
+        .present {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .absent {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* Go Home Button */
+
+        .home-btn {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            background: #2563eb;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            width: fit-content;
+            margin-top: 5px;
+            transition: 0.3s ease;
+        }
+
+        .home-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .home-btn:active {
+            opacity: 0.6;
+        }
+
+        /* Mobile Responsive */
+
+        @media (max-width: 600px) {
+
+            .container {
+                width: 100%;
+            }
+
+            .card {
+                flex-direction: column;
+                align-items: center;
+                padding: 18px;
+                gap: 20px;
+            }
+
+            .pic {
+                width: 80%;
+                height: 220px;
+                min-height: 220px;
+            }
+
+            .info {
+                width: 100%;
+                gap: 10px;
+            }
+
+            .info h2 {
+                font-size: 22px;
+            }
+
+            .info p {
+                font-size: 14px;
+            }
+
+            .home-btn {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <!-- Student Image - Left -->
+
+            <div class="pic">
+                <img src="{{ std[6] }}" alt="Student Image">
+            </div>
+
+            <!-- Student Information - Right -->
+
+            <div class="info">
+
+                <h2>{{ std[1] }}</h2>
+
+                <p><strong>ID:</strong> {{ std[0] }}</p>
+
+                <p><strong>Age:</strong> {{ std[2] }}</p>
+
+                <p><strong>Gender:</strong> {{ std[3] }}</p>
+
+                <p><strong>Marks:</strong> {{ std[4] }}</p>
+
+                <p><strong>Course:</strong> {{ std[5] }}</p>
+
+                {% if std[7] %}
+                    <span class="status present">PRESENT</span>
+                {% else %}
+                    <span class="status absent">ABSENT</span>
+                {% endif %}
+
+                <a href="/" class="home-btn">Go Home</a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

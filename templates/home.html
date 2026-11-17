@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        /* Heading */
+
+        h1 {
+            background: linear-gradient(135deg, #172554, #2563eb);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-size: 28px;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        /* Registration Button */
+
+        .register {
+            display: block;
+            width: max-content;
+            margin: 25px auto;
+            text-decoration: none;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .register button {
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 7px;
+            font-size: 14px;
+        }
+
+        .register button:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(37,99,235,0.3);
+        }
+
+        /* Cards Container */
+
+        .container {
+            width: 96%;
+            margin: 25px auto 40px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        /* Individual Student Card */
+
+        .card {
+            width: 100%;
+            height: 420px;
+            background: linear-gradient(145deg, #ffffff, #f8faff);
+            border-radius: 18px;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+
+            /* Premium Border */
+
+            border: 1.5px solid #c7d7fe;
+
+            /* Soft Shadow */
+
+            box-shadow:
+                0 4px 10px rgba(37, 99, 235, 0.06),
+                0 10px 25px rgba(30, 64, 175, 0.08);
+
+            transition: all 0.3s ease;
+        }
+
+        /* Card Hover Effect */
+
+        .card:hover {
+            border-color: #6366f1;
+            transform: translateY(-6px);
+
+            box-shadow:
+                0 8px 18px rgba(37, 99, 235, 0.12),
+                0 15px 35px rgba(79, 70, 229, 0.15);
+        }
+
+        /* Student Picture */
+
+        .pic {
+            width: 85%;
+            height: 140px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #dbeafe;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+            background: #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        .pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Student Information */
+
+        .info {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .info h2 {
+            width: 100%;
+            text-align: center;
+            font-size: 19px;
+            color: #172554;
+            padding-bottom: 9px;
+            border-bottom: 2px solid #dbeafe;
+        }
+
+        .info p {
+            width: 100%;
+            font-size: 13px;
+            color: #475569;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #f1f5f9;
+            font-weight: 500;
+        }
+
+        .info p strong {
+            color: #1e293b;
+        }
+
+        /* Present / Absent Status */
+
+        .status {
+            padding: 5px 12px;
+            font-size: 10px;
+            border-radius: 20px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .present {
+            color: #15803d;
+            background: #dcfce7;
+        }
+
+        .absent {
+            color: #dc2626;
+            background: #fee2e2;
+        }
+
+        /* View Details Button */
+
+        .view-btn {
+            width: 100%;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            background: #1e293b;
+            color: white;
+            padding: 9px;
+            border-radius: 6px;
+            font-size: 12px;
+            transition: 0.3s ease;
+        }
+
+        .view-btn:hover {
+            background: #0f766e;
+            transform: translateY(-2px);
+        }
+
+        /* Delete and Update Buttons */
+
+        .actions {
+            width: 100%;
+            display: flex;
+            gap: 8px;
+        }
+
+        .actions form {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .actions button {
+            width: 100%;
+            padding: 9px 5px;
+            border-radius: 6px;
+            font-size: 11px;
+        }
+
+        /* Delete Button */
+
+        .delete-btn {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .delete-btn:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        /* Update Button */
+
+        .update-btn {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .update-btn:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        /* Button Active */
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        /* Laptop */
+
+        @media (max-width: 1100px) {
+            .container {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* Tablet */
+
+        @media (max-width: 800px) {
+            .container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* Mobile */
+
+        @media (max-width: 550px) {
+
+            h1 {
+                font-size: 20px;
+                padding: 20px 10px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                width: 92%;
+            }
+
+            .card {
+                min-height: 430px;
+                padding: 18px;
+            }
+
+            .pic {
+                height: 160px;
+            }
+
+            .info h2 {
+                font-size: 21px;
+            }
+
+            .info p {
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>STUDENT MANAGEMENT SYSTEM</h1>
+
+    <!-- New Registration -->
+
+    <a href="/student/add" class="register">
+        <button>+ New Registration</button>
+    </a>
+
+    <!-- Student Cards Container -->
+
+    <div class="container">
+
+        {% for std in stds %}
+
+        <div class="card">
+
+            <!-- Student Image -->
+
+            <div class="pic">
+                <img src="{{ std[6] }}" alt="Student Image">
+            </div>
+
+            <!-- Student Information -->
+
+            <div class="info">
+
+                <h2>{{ std[1] }}</h2>
+
+                <p><strong>ID:</strong> {{ std[0] }}</p>
+
+                <p><strong>Course:</strong> {{ std[5] }}</p>
+
+                <!-- Attendance Status -->
+
+                {% if std[7] %}
+                    <button class="status present">PRESENT</button>
+                {% else %}
+                    <button class="status absent">ABSENT</button>
+                {% endif %}
+
+                <!-- View Details -->
+
+                <a href="/std/{{ std[0] }}" class="view-btn">
+                    View Details
+                </a>
+
+                <!-- Delete and Update -->
+
+                <div class="actions">
+
+                    <form action="/std/delete/{{ std[0] }}" method="post">
+                        <button type="submit" class="delete-btn">
+                            Delete
+                        </button>
+                    </form>
+
+                    <form action="/std/update/{{ std[0] }}" method="get">
+                        <button type="submit" class="update-btn">
+                            Update
+                        </button>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>
